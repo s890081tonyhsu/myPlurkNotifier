@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Test</title>
 		<script src="data/javascript/jquery.min.js"></script>
+		<script src="data/javascript/oauth.js"></script>
 		<script src="data/javascript/popup.js"></script>
 		<link type="text/css" rel="stylesheet" href="data/css/popup.css">
 </head>
@@ -12,6 +13,13 @@
 		<p>This is a test page.</p>
 		<p id="time"></p>
 		<a href="http://s890081tonyhsu.github.io" target="_blank">Gitub Page</a>
+		<div>
+			<label for="testMsg">Test Message:</label>
+			<input id="testMsg" type="text">
+			<input id="saveMsg" type="submit">
+			<p id="lastMsg">Last Message: <span></span></p>
+		</div>
+		<button id="connect">connect</button>
 	</div>
 </body>
 </html>

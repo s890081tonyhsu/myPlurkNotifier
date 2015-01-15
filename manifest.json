@@ -1,8 +1,8 @@
 {
 	"manifest_version": 2,
 
-	"name":"display_message",
-	"description":"This is to show the test message from website.",
+	"name":"Plurk Message Notifier",
+	"description":"This is to show the plurk message from plurk.com",
 	"version":"1.0",
 	"icons":{"128":"data/images/icon128.png"},
 	"browser_action":{
@@ -10,6 +10,7 @@
 		"default_popup":"popup.html",
 		"script":[
 			"data/javascript/jquery.min.js",
+			"data/javascript/oauth.js",
 			"data/javascript/popup.js"
 		],
 		"css":[
@@ -17,8 +18,13 @@
 		]
 	},
 	"permissions":[
-	"http://*.google.com/",
-	"alarms"
+		"http://plurk.com/*",
+		"http://*.google.com/",
+		"alarms",
+		"storage"
 	],
-	"content_security_policy": "script-src 'self' https://ajax.googleapis.com/; object-src 'self'"
+	"content_security_policy": "script-src 'self' https://ajax.googleapis.com/; object-src 'self'",
+	"externally_connectable": {
+	    "matches": ["https://oauth.io/*"]
+	}
 }
