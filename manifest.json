@@ -5,13 +5,17 @@
 	"description":"This is to show the plurk message from plurk.com",
 	"version":"1.0",
 	"icons":{"128":"data/images/icon128.png"},
+	"background":{
+		"page":"background.html"
+	},
 	"browser_action":{
 		"default_icon":"data/images/icon128.png",
 		"default_popup":"popup.html",
 		"script":[
 			"data/javascript/jquery.min.js",
 			"data/javascript/oauth.js",
-			"data/javascript/popup.js"
+			"data/javascript/popup.js",
+			"data/javascript/background.js"
 		],
 		"css":[
 			"data/css/popup.css"

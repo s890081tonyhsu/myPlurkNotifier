@@ -22,3 +22,7 @@ body #wrapper a {
   color: rgba(102, 163, 210, 0.85);
   text-decoration: none;
 }
+/* line 19, ../sass/popup.scss */
+body #wrapper #name {
+  display: none;
+}

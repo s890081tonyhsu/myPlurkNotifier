@@ -1,3 +1,11 @@
+function callReturn(method, data, responseFunc){
+	chrome.runtime.sendMessage({method:method, data:data},function(response){
+  	//here response will be the word you want
+  	console.log(response);
+		responseFunc(response);
+	});
+}
+
 function nowTime() { 
 		var data = new Date();
 		var hours = data.getHours();
@@ -31,21 +39,17 @@ function saveMsg() {
 	}
 }
 
+function personalData(response) {
+	$('#connect').fadeOut();
+	$('#name span').text(response.display_name);
+	$('#name').fadeIn();
+}
+
 $(document).ready(nowTime);
 $(document).ready(lastMsg);
 $(document).ready(function(){
 	$('#saveMsg').bind('click', saveMsg);
+	$('#connect').bind('click', function(){
+		callReturn("GET", '/APP/Users/me', personalData);
+	});
 });
-
-OAuth.initialize("lSgIX_kBDPoIH1hwRtnOoIf5PeU");
-window.onload = function() {
-    document.getElementById('connect').addEventListener('click', function() {
-			OAuth.popup("plurk", function(e,r) {
-					console.log(e);
-					console.log(r);
-					r.get('/APP/Users/me').done(function(data) {
-						console.log(data);
-					});
-			});
-    });
-}
