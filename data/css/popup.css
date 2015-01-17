@@ -23,6 +23,6 @@ body #wrapper a {
   text-decoration: none;
 }
 /* line 19, ../sass/popup.scss */
-body #wrapper #name {
+body #wrapper #name, body #wrapper #function {
   display: none;
 }

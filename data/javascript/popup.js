@@ -39,10 +39,11 @@ function saveMsg() {
 	}
 }
 
-function personalData(response) {
+function connect(response) {
 	$('#connect').fadeOut();
 	$('#name span').text(response.display_name);
 	$('#name').fadeIn();
+	$('#function').fadeIn();
 }
 
 $(document).ready(nowTime);
@@ -50,6 +51,6 @@ $(document).ready(lastMsg);
 $(document).ready(function(){
 	$('#saveMsg').bind('click', saveMsg);
 	$('#connect').bind('click', function(){
-		callReturn("GET", '/APP/Users/me', personalData);
+		callReturn("connect", '', connect);
 	});
 });
