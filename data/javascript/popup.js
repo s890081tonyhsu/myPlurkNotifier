@@ -1,3 +1,14 @@
+var opt = {
+  type: "basic",
+  title: "Plurk Notifier",
+  message: "Primary message to display",
+  iconUrl: "data/images/icon128.png"
+}
+
+function cloneData(source){
+	return JSON.parse(JSON.stringify(source));
+}
+
 function callReturn(method, data, responseFunc){
 	chrome.runtime.sendMessage({method:method, data:data},function(response){
   	//here response will be the word you want
@@ -29,11 +40,16 @@ function lastMsg() {
 
 function saveMsg() {
 	var data = $('#testMsg').val();
+	var saveAlert = cloneData(opt);
 	if(!data){
+		saveAlert.message = "Null Input";
+		chrome.notifications.create("saveReturn", saveAlert, function(notificationId){});
 		return;
 	}else{
 		chrome.storage.local.set({'test': data}, function(){
-			alert('Message saved!');
+			saveAlert.message = "Message Saved";
+			console.log(saveAlert);
+			chrome.notifications.create("saveReturn", saveAlert, function(notificationId){});
 		});
 		lastMsg();
 	}
